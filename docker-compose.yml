@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  runner:
+    build:
+      context: .
+      args:
+        - non-interactive
+        - executor="shell"
+        - docker-image="alpine:latest"
+        - url="https://gitlab.berwick.fr/"
+        - registration-token="Dmus1_oomPdxQRj_4EP-"
+        - description="docker-runner"
+        - tag-list=""
+        - run-untagged="true"
+        - locked="false"
+        - access-level="not_protected"
+    volumes:
+      - ./runner-data:/etc/gitlab-runner
+    restart: always
