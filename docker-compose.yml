@@ -5,9 +5,10 @@ services:
   registrer:
     image: gitlab/gitlab-runner:latest
     volumes:
+      - ./entrypoint.sh:/etc/entrypoint.sh
       - ./runner-data:/etc/gitlab-runner
       - /var/run/docker.sock:/var/run/docker.sock
-    command: register --non-interactive --executor "shell" --url "YOUR_GITLAB(https://gitlab.com/)" --docker-image alpine:latest --registration-token="YOUR_REGISTRATION_TOKEN" --description="docker-runner" --tag-list="" --run-untagged="true" --locked="false" --access-level="not_protected"
+    entrypoint: /etc/entrypoint.sh
   
   runner:
     image: gitlab/gitlab-runner:latest
