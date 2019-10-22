@@ -34,6 +34,35 @@ If you want your Runner to run pipelines for only a specific project, go to `You
 
 There, get your **token** and **URL**.
 
+### Specify tags (optional)
+
+You can tag `jobs` and `runners` so only runners with the specific tags of the job will run your pipeline
+
+To tag a specific job, go to your `gitlab-ci.yml` file and edit the `tags` attribute of your job.
+
+For example like that :
+```yml
+windows job:
+  stage:
+    - build
+  tags:
+    - windows
+    - greetings
+    - example_scripts
+  script:
+    - echo Hello, %USERNAME%!
+
+osx job:
+  stage:
+    - build
+  tags:
+    - osx
+  script:
+    - echo "Hello, $USER!"
+```
+
+In `entrypoint.sh`, edit the `--tag-list` flag to add Runner tags.
+
 ### Edit entrypoint.sh
 
 Open `entrypoint.sh` and edit the options `--url`, `--description` (optional) and `--registration-token`
