@@ -63,6 +63,11 @@ osx job:
 
 In `entrypoint.sh`, edit the `--tag-list` flag to add Runner tags.
 
-### Edit entrypoint.sh
+### Edit entrypoint.sh and run !
 
 Open `entrypoint.sh` and edit the options `--url`, `--description` (optional) and `--registration-token`
+
+Then, run docker-compose :
+```
+docker-compose up -d
+```
