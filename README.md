@@ -30,7 +30,7 @@ If you want your Runner to run pipelines for any project, go to the `Admin Area 
 
 If you want your Runner to run pipelines for only a specific project, go to `Your Project > Settings > CI / CD` and expand the `Runners` tab.
 
-![Project-wide token location](./images/system-wide-token.png)
+![Project-wide token location](./images/project-wide-token.png)
 
 There, get your **token** and **URL**.
 
