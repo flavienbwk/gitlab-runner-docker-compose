@@ -1,6 +1,6 @@
 # Gitlab Runner with docker-compose
 
-Gitlab runner easily explained and dockerized with compose.
+Gitlab runners easily explained and dockerized with compose.
 
 **Take the time to read this documentation to understand how runners work.**
 
