@@ -2,20 +2,19 @@ version: '3'
 
 services:
 
-  runner:
-    build:
-      context: .
-      args:
-        - non-interactive
-        - executor="shell"
-        - docker-image="alpine:latest"
-        - url="https://gitlab.berwick.fr/"
-        - registration-token="Dmus1_oomPdxQRj_4EP-"
-        - description="docker-runner"
-        - tag-list=""
-        - run-untagged="true"
-        - locked="false"
-        - access-level="not_protected"
+  registrer:
+    image: gitlab/gitlab-runner:latest
     volumes:
       - ./runner-data:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: register --non-interactive --executor "shell" --url "YOUR_GITLAB(https://gitlab.com/)" --docker-image alpine:latest --registration-token="YOUR_REGISTRATION_TOKEN" --description="docker-runner" --tag-list="" --run-untagged="true" --locked="false" --access-level="not_protected"
+  
+  runner:
+    image: gitlab/gitlab-runner:latest
+    tty: true
+    depends_on:
+      - registrer
     restart: always
+    volumes:
+      - ./runner-data:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
